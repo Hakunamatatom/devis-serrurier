@@ -84,9 +84,11 @@ function calc(){
  const day=document.getElementById('day').value;
  const holiday=document.getElementById('holiday').value;
  const time=document.getElementById('time').value;
- let maj;
- if(holiday==='yes') maj=50; // jour férié : +50 %, quel que soit le jour/horaire
- else maj=rates[day][time];
+let maj = rates[day][time];
+
+if (holiday === 'yes') {
+    maj += 50;
+}
  const labor=75*(1+maj/100);
  const total=Math.max(100,labor+zone);
  document.getElementById('price').textContent=Math.round(total)+' €';
